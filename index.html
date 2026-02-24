@@ -8,78 +8,38 @@
 </head>
 <body class="bg-gray-50">
     
-    <div class="max-w-4xl mx-auto p-8">
+    <div class="max-w-4xl mx-auto p-4 md:p-8">
         
-        <!-- Header -->
-        <h1 class="text-3xl font-bold mb-8">Job Application Tracker</h1>
+        <h1 class="text-2xl md:text-3xl font-bold mb-6 md:mb-8">Job Application Tracker</h1>
         
-        <!-- Stats Cards -->
-        <div class="grid grid-cols-3 gap-4 mb-8">
-            <div class="bg-white p-6 rounded shadow border">
-                <p class="text-sm text-gray-600 mb-2">Total</p>
-                <p id="total-count" class="text-3xl font-bold">0</p>
+        <div class="grid grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-8">
+            <div class="bg-white p-4 md:p-6 rounded shadow border">
+                <p class="text-xs md:text-sm text-gray-600 mb-1 md:mb-2">Total</p>
+                <p id="total-count" class="text-2xl md:text-3xl font-bold">8</p>
             </div>
-            <div class="bg-white p-6 rounded shadow border">
-                <p class="text-sm text-gray-600 mb-2">Interview</p>
-                <p id="interview-count" class="text-3xl font-bold text-green-500">0</p>
+            <div class="bg-white p-4 md:p-6 rounded shadow border">
+                <p class="text-xs md:text-sm text-gray-600 mb-1 md:mb-2">Interview</p>
+                <p id="interview-count" class="text-2xl md:text-3xl font-bold text-green-500">0</p>
             </div>
-            <div class="bg-white p-6 rounded shadow border">
-                <p class="text-sm text-gray-600 mb-2">Rejected</p>
-                <p id="rejected-count" class="text-3xl font-bold text-red-500">0</p>
+            <div class="bg-white p-4 md:p-6 rounded shadow border">
+                <p class="text-xs md:text-sm text-gray-600 mb-1 md:mb-2">Rejected</p>
+                <p id="rejected-count" class="text-2xl md:text-3xl font-bold text-red-500">0</p>
             </div>
         </div>
 
-        <hr class="mb-8">
+        <hr class="mb-6 md:mb-8">
 
-        <!-- Available Jobs Header -->
-        <div class="flex justify-between mb-6">
-            <h2 class="text-xl font-bold">Available Jobs</h2>
-            <p class="text-gray-600"><span id="jobs-count">0</span> jobs</p>
+        <div class="flex justify-between items-center mb-4 md:mb-6">
+            <h2 class="text-lg md:text-xl font-bold">Available Jobs</h2>
+            <p class="text-sm md:text-base text-gray-600"><span id="jobs-count">8</span> jobs</p>
         </div>
 
-        <!-- Filter Tabs -->
         <div class="flex gap-2 mb-6">
-            <button id="btn-all" class="px-6 py-2 bg-blue-500 text-white rounded font-bold">All</button>
-            <button id="btn-interview" class="px-6 py-2 bg-white border rounded font-bold">Interview</button>
-            <button id="btn-rejected" class="px-6 py-2 bg-white border rounded font-bold">Rejected</button>
+            <button id="btn-all" class="px-4 md:px-6 py-2 bg-blue-500 text-white rounded font-bold text-xs md:text-sm">All</button>
+            <button id="btn-interview" class="px-4 md:px-6 py-2 bg-white border rounded font-bold text-xs md:text-sm">Interview</button>
+            <button id="btn-rejected" class="px-4 md:px-6 py-2 bg-white border rounded font-bold text-xs md:text-sm">Rejected</button>
         </div>
 
-        <!-- Jobs Container -->
         <div id="jobs-container"></div>
 
     </div>
-
-    <script>
-const jobs = [
-    {id: 1, company: "Mobile First Corp", position: "React Native Developer", location: "Remote", type: "Full-time", salary: "$130,000 - $175,000", description: "Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.", status: "not-applied"},
-    {id: 2, company: "WebFlow Agency", position: "Web Designer & Developer", location: "Los Angeles, CA", type: "Part-time", salary: "$80,000 - $120,000", description: "Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.", status: "not-applied"},
-    {id: 3, company: "DataViz Solutions", position: "Data Visualization Specialist", location: "Boston, MA", type: "Full-time", salary: "$125,000 - $165,000", description: "Transform complex data into compelling visualizations. Required skills: D3.js, React, and strong analytical thinking.", status: "not-applied"},
-    {id: 4, company: "CloudFirst Inc", position: "Backend Developer", location: "Seattle, WA", type: "Full-time", salary: "$140,000 - $190,000", description: "Design and maintain scalable backend systems using Python and AWS. Work with modern DevOps practices and cloud infrastructure.", status: "not-applied"},
-    {id: 5, company: "Innovation Labs", position: "UI/UX Engineer", location: "Austin, TX", type: "Full-time", salary: "$110,000 - $150,000", description: "Create beautiful and functional user interfaces for our suite of products. Strong design skills and frontend development expertise required.", status: "not-applied"},
-    {id: 6, company: "MegaCorp Solutions", position: "JavaScript Developer", location: "New York, NY", type: "Full-time", salary: "$130,000 - $170,000", description: "Build enterprise applications with JavaScript and modern frameworks. We offer competitive compensation, health insurance, and professional development opportunities.", status: "not-applied"},
-    {id: 7, company: "StartupXYZ", position: "Full Stack Engineer", location: "Remote", type: "Full-time", salary: "$120,000 - $160,000", description: "Join our fast-growing startup and work on our core platform. Experience with Node.js and React required. Great benefits and equity package included.", status: "not-applied"},
-    {id: 8, company: "TechCorp Industries", position: "Senior Frontend Developer", location: "San Francisco, CA", type: "Full-time", salary: "$130,000 - $175,000", description: "We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects.", status: "not-applied"}
-];
-
-function displayJobs() {
-    const container = document.getElementById('jobs-container');
-    container.innerHTML = '';
-    
-    for (const job of jobs) {
-        const card = document.createElement('div');
-        card.className = 'bg-white border rounded p-6 mb-4';
-        
-        card.innerHTML = '<h3 class="font-bold text-lg">' + job.company + '</h3><p class="text-gray-600 mb-2">' + job.position + '</p><p class="text-sm text-gray-500 mb-2">' + job.location + ' • ' + job.type + ' • ' + job.salary + '</p><div class="mb-2"><span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded">NOT APPLIED</span></div><p class="text-sm mb-4">' + job.description + '</p><div class="flex gap-2"><button class="px-4 py-2 border-2 border-green-500 text-green-500 rounded font-bold text-sm">INTERVIEW</button><button class="px-4 py-2 border-2 border-red-500 text-red-500 rounded font-bold text-sm">REJECTED</button></div>';
-        
-        container.appendChild(card);
-    }
-    
-    document.getElementById('total-count').innerText = jobs.length;
-    document.getElementById('jobs-count').innerText = jobs.length;
-}
-
-displayJobs();
-    </script>
-
-</body>
-</html>
