@@ -50,7 +50,6 @@
     </div>
 
     <script>
-// Jobs data
 const jobs = [
     {id: 1, company: "Mobile First Corp", position: "React Native Developer", location: "Remote", type: "Full-time", salary: "$130,000 - $175,000", description: "Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.", status: "not-applied"},
     {id: 2, company: "WebFlow Agency", position: "Web Designer & Developer", location: "Los Angeles, CA", type: "Part-time", salary: "$80,000 - $120,000", description: "Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.", status: "not-applied"},
@@ -62,8 +61,25 @@ const jobs = [
     {id: 8, company: "TechCorp Industries", position: "Senior Frontend Developer", location: "San Francisco, CA", type: "Full-time", salary: "$130,000 - $175,000", description: "We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects.", status: "not-applied"}
 ];
 
-console.log('Jobs loaded:', jobs.length);
-</script>
+function displayJobs() {
+    const container = document.getElementById('jobs-container');
+    container.innerHTML = '';
+    
+    for (const job of jobs) {
+        const card = document.createElement('div');
+        card.className = 'bg-white border rounded p-6 mb-4';
+        
+        card.innerHTML = '<h3 class="font-bold text-lg">' + job.company + '</h3><p class="text-gray-600 mb-2">' + job.position + '</p><p class="text-sm text-gray-500 mb-2">' + job.location + ' • ' + job.type + ' • ' + job.salary + '</p><div class="mb-2"><span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded">NOT APPLIED</span></div><p class="text-sm mb-4">' + job.description + '</p><div class="flex gap-2"><button class="px-4 py-2 border-2 border-green-500 text-green-500 rounded font-bold text-sm">INTERVIEW</button><button class="px-4 py-2 border-2 border-red-500 text-red-500 rounded font-bold text-sm">REJECTED</button></div>';
+        
+        container.appendChild(card);
+    }
+    
+    document.getElementById('total-count').innerText = jobs.length;
+    document.getElementById('jobs-count').innerText = jobs.length;
+}
+
+displayJobs();
+    </script>
 
 </body>
 </html>
